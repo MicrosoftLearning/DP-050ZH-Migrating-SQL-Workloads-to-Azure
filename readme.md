@@ -1,35 +1,26 @@
-# INF99X: Sample Course
+﻿# DP-050 - 将 SQL 工作负荷迁移至 Azure
 
-- **[Download Latest Student Handbook and AllFiles Content](../../releases/latest)**
-- **Are you a MCT?** - Have a look at our [GitHub User Guide for MCTs](https://microsoftlearning.github.io/MCT-User-Guide/)
-- **Need to manually build the lab instructions?** - Instructions are available in the [MicrosoftLearning/Docker-Build](https://github.com/MicrosoftLearning/Docker-Build) repository
+在本课程中，学生将首先探索有助于数据现代化项目成功的所需准备步骤，以及可以在该项目的各个阶段有助于他们的工具。然后，他们将探索将 SQL 工作负荷迁移到 Azure 中运行的一系列不同 SQL 服务的不同方法。
 
-## What are we doing?
+以下是每个模块的实验目标摘要：
 
-- To support this course, we will need to make frequent updates to the course content to keep it current with the Azure services used in the course.  We are publishing the lab instructions and lab files on GitHub to allow for open contributions between the course authors and MCTs to keep the content current with changes in the Azure platform.
+## 实验 1 - 介绍 Data Platform Modernization
 
-- We hope that this brings a sense of collaboration to the labs like we've never had before - when Azure changes and you find it first during a live delivery, go ahead and make an enhancement right in the lab source.  Help your fellow MCTs.
+学生将使用本模块中获得的信息来展示对 Data Platform Modernization 的理解，以及组织为何及如何在高层次上实施现代化项目。他们将演示如何确定迁移到 Azure 的成本。他们还将收集与正在处理的环境有关的信息。学生将最终确定应该用于给定场景的 Data Platform Modernization 策略。
 
-## How should I use these files relative to the released MOC files?
+## 实验 2 - 选择适用于数据迁移的正确工具
 
-- The instructor handbook and PowerPoints are still going to be your primary source for teaching the course content.
+学生将在规定的 Data Platform Modernization 阶段使用两个工具以自动方式执行环境发现。他们还将识别任何迁移前兼容性问题，并在执行本地服务器迁移之前制定有关如何解决问题的计划。最后，他们将评估工作负荷在 Azure SQL 数据库的目标版本上的执行情况。
 
-- These files on GitHub are designed to be used in conjunction with the student handbook, but are in GitHub as a central repository so MCTs and course authors can have a shared source for the latest lab files.
+## 实验 3 - 将 SQL 工作负荷迁移到 Azure 虚拟机
 
-- It will be recommended that for every delivery, trainers check GitHub for any changes that may have been made to support the latest Azure services, and get the latest files for their delivery.
+学生将配置数据迁移环境，包括在 Azure 上配置 SQL Server VM。
+然后，他们将使用数据迁移助手 (DMA) 从 SQL Server 2008 R2 环境传输数据库，从而在 Azure 虚拟机中执行向 SQL Server 的数据迁移。
 
-## What about changes to the student handbook?
+## 实验 4 - 将 SQL 工作负荷迁移到 Azure SQL 数据库
 
-- We will review the student handbook on a quarterly basis and update through the normal MOC release channels as needed.
+学生将使用 Azure 数据库迁移助手 (DMA) 从本地SQL Server 向 Azure SQL 数据库执行脱机迁移。在此之前，学生将确定要迁移到 Azure 中的正确 SQL Server 实例选项。他们将使用迁移工具加载数据并将数据移动到 Azure SQL 数据库中来最终完成迁移。
 
-## How do I contribute?
+## 实验 5 - 将 SQL 工作负荷迁移到 Azure SQL 数据库托管实例
 
-- Any MCT can submit a pull request to the code or content in the GitHub repro, Microsoft and the course author will triage and include content and lab code changes as needed.
-
-- You can submit bugs, changes, improvement and ideas.  Find a new Azure feature before we have?  Submit a new demo!
-
-## Notes
-
-### Classroom Materials
-
-It is strongly recommended that MCTs and Partners access these materials and in turn, provide them separately to students.  Pointing students directly to GitHub to access Lab steps as part of an ongoing class will require them to access yet another UI as part of the course, contributing to a confusing experience for the student. An explanation to the student regarding why they are receiving separate Lab instructions can highlight the nature of an always-changing cloud-based interface and platform. Microsoft Learning support for accessing files on GitHub and support for navigation of the GitHub site is limited to MCTs teaching this course only.
+学生将首先评估他们从本地 SQL Server 迁移到 Azure SQL 数据库托管实例所用的迁移过程。然后，他们将使用 Azure 数据库迁移服务执行联机迁移。在检查访问数据库的应用程序的应用程序兼容性之前，他们还将迁移数据并将其加载到托管实例中。该实验处于模拟环境中。
