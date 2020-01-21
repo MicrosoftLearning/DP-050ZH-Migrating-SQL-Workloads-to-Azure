@@ -70,6 +70,7 @@ lab:
     查看磁盘设置，接受但不做任何更改。
 
 1. 选择 **下一步：网络**
+    查看**网络**设置，接受但不做任何更改。
 1. 选择 **下一步：管理**
 
     查看管理设置，然后更改启动诊断：
@@ -81,9 +82,9 @@ lab:
 
     在 SQL Server 设置选项卡上，填写以下信息：
 
-    a. SQL 连接性：选择“**公开 (Internet)**”
-    b. SQL 身份验证：**选择“启用”**
-    c. 在密码框中键入 **Pa55w.rd.123456789**
+    1. SQL 连接性：选择“**公开 (Internet)**”
+    1. SQL 身份验证：**选择“启用”**
+    1. 在密码框中键入 **Pa55w.rd.123456789**
 
 15. 选择“**查看 + 创建**”
 
@@ -123,11 +124,11 @@ lab:
 1. 在 [Azure 门户](https://portal.azure.com)，选择“**存储帐户**”边栏选项卡。
 2. 选择“**添加**”。
 3. 在“创建存储帐户”窗口中，填写以下信息：
-    a. 资源组：选择“**现有**”
-    b. 选择你在上一个联系中创建的“**DP-050-Training**”资源组
-    c. 存储帐户名：**dp050storagexxxx**（其中 xxxx 是随机字符数）
-    d. 位置：选择与在上一个练习中创建虚拟机的位置最接近的位置。
-    e. 保留其他默认设置。
+    1. 资源组：选择“**现有**”
+    1. 选择你在上一个联系中创建的“**DP-050-Training**”资源组
+    1. 存储帐户名：**dp050storagexxxx**（其中 xxxx 是随机字符数）
+    1. 位置：选择与在上一个练习中创建虚拟机的位置最接近的位置。
+    1. 保留其他默认设置。
 4. 单击“**查看 + 创建**”以跳过“高级”和“标记”部分
 5. 选择“**创建**”
 
@@ -144,11 +145,8 @@ lab:
     b. 配额： **200 Gib**
 4. 选择“**创建**”
 5. 创建文件共享后，选择已创建的文件共享右侧的“…”
-6. 从下拉式列表中选择“**连接**”
-
-![下拉列表](https://github.com/MicrosoftLearning/DP-050-Migrating-SQL-Workloads-to-Azure/blob/master/images/dropdown.png)
-
-7. 在“连接”边栏选项卡中，选择驱动器号“**U:**”
+6. 从下拉式列表中选择**连接**
+7. 在“连接”边栏选项卡中，选择驱动器号**U:**
 8. 从下面列出的文本中复制连接命令语法。或者，如果它们的键不以正斜杠开头，请运行此命令：
 
 该文本看起来像下面的命令语法：
@@ -196,14 +194,25 @@ cmdkey /add:dp050storagexxxx.file.core.windows.net /user:Azure\dp050storagexxxx 
 2.	复制文本
 3.	在 SQL Management Studio 中，在连接到本地服务器（伦敦）时创建新查询
 4.	将 MapNetworkdrive 中的文本粘贴到查询窗口中
-5.	更改查询以反映以下屏幕截图，并通过 xp_cmhdshell 存储过程运行命令行。
- ![sp_configure 选项](https://github.com/MicrosoftLearning/DP-050-Migrating-SQL-Workloads-to-Azure/blob/master/images/cmdshell.png)
+5.	更改查询以反映以下屏幕截图，并通过 xp_cmdshell 存储过程运行命令行。
+
+```sql
+SP_CONFIGURE 'show advanced options', 1
+RECONFIGURE
+SP_CONFIGURE 'xp_cmdshell', 1
+RECONFIGURE
+GO
+EXEC xp_cmdshell 'cmdkey /add:dp050storagexxxx.file.core.windows.net /user:Azure\dp050storagexxxx /pass:Mcty80xn7j'
+EXEC xp_cmdshell 'net use U: \\dp050storagexxxx.file.core.windows.net\backupshare /persistent:Yes'
+EXEC xp_cmdshell 'dir u:'
+```
+
 6.	运行查询并验证网络驱动器是否可访问
 7.	将查询保存在“Labfiles”文件夹中，命名为“**MapNetworkdrive.sql**”
 8.	启动新的查询窗口并通过运行以下查询禁用 xp_cmdshell：
 
 ```sql
-    SP_CONFIGURE ‘xp_cmdshell’,1
+    SP_CONFIGURE ‘xp_cmdshell’,0
 ```
 
 9.	在“对象资源管理器”中，选择 Azure VM SQL Server 实例并创建新查询
@@ -225,10 +234,10 @@ cmdkey /add:dp050storagexxxx.file.core.windows.net /user:Azure\dp050storagexxxx 
 
 1.	在 SQL Server 2008 R2 实验室环境中，打开应用程序“**Microsoft 数据迁移助手**”
 2.	选择“**+**”，这将打开新项目的对话框，键入以下信息：
-    a.	项目类型：**迁移**
-    b.	项目名：**迁移到 SQL VM**
-    c.	源服务器类型：**SQL Server**
-    d.	目标服务器类型：**Azure 虚拟机上的 SQL Server**
+    1.	项目类型：**迁移**
+    1.	项目名：**迁移到 SQL VM**
+    1.	源服务器类型：**SQL Server**
+    1.	目标服务器类型：**Azure 虚拟机上的 SQL Server**
 3.	单击“**创建**”
 4.	单击“**下一步**”
 5.	在源服务器详细信息“服务器名”对话框中，输入“**localhost 的服务器名**”
@@ -241,7 +250,7 @@ cmdkey /add:dp050storagexxxx.file.core.windows.net /user:Azure\dp050storagexxxx 
     •	AdventureworksDW2008_4M
     •	Reportserver
     •	ReportServerTempDB
-12.	在“共享位置”对话框中键入： **U:\**
+12.	在“共享位置”对话框中键入： U:\
 13.	查看选择登录窗口
 14.	单击“**开始迁移**”
 
